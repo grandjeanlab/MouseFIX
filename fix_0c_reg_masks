@@ -1,0 +1,29 @@
+#!/bin/sh
+
+folders=$1
+fixdir=$2
+
+exfunc=$folders/example_func_N4_dn.nii.gz
+
+for m in 0 1 2 3 ; do
+
+WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}.nii.gz ${folders}/fix/std1mm2exfunc${m}.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+
+WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil.nii.gz ${folders}/fix/std1mm2exfunc${m}dil.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+
+WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil2.nii.gz ${folders}/fix/std1mm2exfunc${m}dil2.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}.nii.gz ${folders}/fix/std1mm2exfunc${m}.nii.gz -R $exfunc -i ${folders}/reg/func2anatAffine.txt -i ${folders}/reg/anat2templateAffine.txt ${folders}/reg/anat2templateInverseWarp.nii.gz
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil.nii.gz ${folders}/fix/std1mm2exfunc${m}dil.nii.gz -R $exfunc -i ${folders}/reg/func2anatAffine.txt ${folders}/reg/anat2templateAffine.txt ${folders}/reg/anat2templateInverseWarp.nii.gz
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil2.nii.gz ${folders}/fix/std1mm2exfunc${m}dil2.nii.gz -R $exfunc -i ${folders}/reg/func2anatAffine.txt ${folders}/reg/anat2templateAffine.txt ${folders}/reg/anat2templateInverseWarp.nii.gz
+done
+
+
+
+
+
+
+
+
