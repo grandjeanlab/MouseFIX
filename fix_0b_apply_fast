@@ -20,7 +20,7 @@ exfunc=${folders}/example_func_N4_dn.nii.gz
 
 #flirt -in ${folders}/fix/fastsg_pveseg -ref $exfunc -applyxfm -init ${folders}/reg/highres2example_func.mat -interp nearestneighbour -out ${folders}/fix/hr2exf
 
-WarpTimeSeriesImageMultiTransform 4 ${folders}/fix/fastsg_pveseg.nii.gz ${folders}/fix/hr2exf.nii.gz -R $exfunc -i ${folders}/reg/func2anat0GenericAffine.mat ${folders}/reg/func2anat1InverseWarp.nii.gz --use-NN
+WarpTimeSeriesImageMultiTransform 4 ${folders}/fix/fastsg_pveseg.nii.gz ${folders}/fix/hr2exf.nii.gz -R $exfunc -i ${folders}/reg/func2anat0GenericAffine.mat ${folders}/reg/func2anat0InverseWarp.nii.gz --use-NN
 
 #flirt -in ${folders}/fix/fastsg_pve_0 -ref $exfunc -applyxfm -init ${folders}/reg/highres2example_func.mat -datatype float -out ${folders}/fix/exfcsf
 #flirt -in ${folders}/fix/fastsg_pve_1 -ref $exfunc -applyxfm -init ${folders}/reg/highres2example_func.mat -datatype float -out ${folders}/fix/exfgm
