@@ -11,7 +11,7 @@ antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}.nii.gz -r $anat_N4 -t reg
 antsApplyTransforms -i tmpmask.nii.gz -r $exfunc -t reg/func2anat_inv.nii.gz -o ${folders}/fix/std1mm2exfunc${m}.nii.gz
 rm tmpmask.nii.gz
 
-antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}dil.nii.gz -r $anat_N4 -t reg//abi2anat_inv.nii.gz -o tmpmask.nii.gz
+antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}dil.nii.gz -r $anat_N4 -t reg/abi2anat_inv.nii.gz -o tmpmask.nii.gz
 antsApplyTransforms -i tmpmask.nii.gz -r $exfunc -t reg/func2anat_inv.nii.gz -o ${folders}/fix/std1mm2exfunc${m}dil.nii.gz
 rm tmpmask.nii.gz
 
