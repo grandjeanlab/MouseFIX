@@ -7,11 +7,24 @@ exfunc=$folders/example_func_N4_dn.nii.gz
 
 for m in 0 1 2 3 ; do
 
-WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}.nii.gz ${folders}/fix/std1mm2exfunc${m}.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}.nii.gz -r $anat_N4 -t abi2anat_inv.nii.gz -o tmpmask.nii.gz
+antsApplyTransforms -i tmpmask.nii.gz -r $exfunc -t reg/func2anat_inv.nii.gz -o ${folders}/fix/std1mm2exfunc${m}.nii.gz
+rm tmpmask.nii.gz
 
-WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil.nii.gz ${folders}/fix/std1mm2exfunc${m}dil.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}dil.nii.gz -r $anat_N4 -t abi2anat_inv.nii.gz -o tmpmask.nii.gz
+antsApplyTransforms -i tmpmask.nii.gz -r $exfunc -t reg/func2anat_inv.nii.gz -o ${folders}/fix/std1mm2exfunc${m}dil.nii.gz
+rm tmpmask.nii.gz
 
-WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil2.nii.gz ${folders}/fix/std1mm2exfunc${m}dil2.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+antsApplyTransforms -i $fixdir/mask_files/sag_mask${m}dil2.nii.gz -r $anat_N4 -t abi2anat_inv.nii.gz -o tmpmask.nii.gz
+antsApplyTransforms -i tmpmask.nii.gz -r $exfunc -t reg/func2anat_inv.nii.gz -o ${folders}/fix/std1mm2exfunc${m}dil2.nii.gz
+rm tmpmask.nii.gz
+
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}.nii.gz ${folders}/fix/std1mm2exfunc${m}.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil.nii.gz ${folders}/fix/std1mm2exfunc${m}dil.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
+
+#WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}dil2.nii.gz ${folders}/fix/std1mm2exfunc${m}dil2.nii.gz -R $exfunc reg/epi2temp_inv.nii.gz
 
 #WarpTimeSeriesImageMultiTransform 4 $fixdir/mask_files/sag_mask${m}.nii.gz ${folders}/fix/std1mm2exfunc${m}.nii.gz -R $exfunc -i ${folders}/reg/func2anatAffine.txt -i ${folders}/reg/anat2templateAffine.txt ${folders}/reg/anat2templateInverseWarp.nii.gz
 
